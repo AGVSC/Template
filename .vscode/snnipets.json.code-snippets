@@ -1,0 +1,43 @@
+{
+	"C C++ Header": {
+		"scope": "c, cpp",
+		"prefix": "header",
+		"description": "Add #ifndef, #define and #endif",
+		"body": [
+			"#ifndef __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			"#define __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			"",
+			"$0",
+			"#endif  // __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			""
+		]
+	},
+	"C C++ namespace": {
+		"scope": "c, cpp",
+		"prefix": "ns",
+		"description": "Add namespace ",
+		"body": [
+			"namespace ${TM_FILENAME_BASE/(.*)/${1:/lowcase}/} {",
+			"$0",
+			"",
+			"}  // namespace ${TM_FILENAME_BASE/(.*)/${1:/lowcase}/}",
+			""
+		]
+	},
+	"Python module head description": {
+		"scope": "python",
+		"prefix": "docheader",
+		"description": "Add python module head description ",
+		"body": [
+			"\"\"\"",
+			"${WORKSPACE_NAME/([a-z])/${1:/upcase}/}_${TM_FILENAME_BASE/(.*)/${1:/lowcase}/i}",
+			"",
+			"File name : ${TM_FILENAME/([a-z])/${1:/upcase}/}",
+			"Authors   : $1",
+			"Time      : ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}, ${CURRENT_HOUR}:${CURRENT_MINUTE}",
+			"Version   : 0.1.0",
+			"\"\"\"",
+			""
+		]
+	}
+}

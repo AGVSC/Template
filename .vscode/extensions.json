@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "mine.cpplint",
+        "josetr.cmake-language-support-vscode",
+        "hars.CppSnippets",
+        "ms-vscode.cpptools-themes",
+        "ms-iot.vscode-ros",
+        "ajshort.msg",
+        "eamodio.gitlens",
+    ]
+}
