@@ -1,12 +1,27 @@
 {
     "recommendations": [
-        "ms-vscode.cpptools-extension-pack",
-        "mine.cpplint",
-        "josetr.cmake-language-support-vscode",
-        "hars.CppSnippets",
-        "ms-vscode.cpptools-themes",
-        "ms-iot.vscode-ros",
-        "ajshort.msg",
-        "eamodio.gitlens",
+        // cpp
+        "ms-vscode.cpptools-extension-pack", // cpp extension pack
+        "mine.cpplint", // cpp language check
+        "cschlosser.doxdocgen", // cpp discrption generater
+        "xaver.clang-format", // cpp formatter
+        "hars.CppSnippets", // cpp snippets
+        // camke
+        "twxs.cmake", // cmake language
+        "josetr.cmake-language-support-vscode", // cmake support
+        // ros
+        "ms-iot.vscode-ros", // ros pack
+        "ajshort.msg", // ros msg support
+        // python
+        "ms-python.python", // python language
+        "ms-python.vscode-pylance", // python support
+        "kevinrose.vsc-python-indent", // python support
+        "ms-python.pylint", // python language check
+        "njpwerner.autodocstring", // python discrption generater
+        "frhtylcn.pythonsnippets", // python snippets
+        // tools 
+        "aaron-bond.better-comments", // tool : better comments
+        "eamodio.gitlens", // tool : git support
+        "shardulm94.trailing-spaces", // tool : remove useless space in lines
     ]
 }

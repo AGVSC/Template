@@ -4,12 +4,16 @@
 
 ## Descirption
 
-This repository is AGVSC general template library, which specifies the coding specification and file structure of a series of repositories, and can be used as the initial repository for rapid construction
+This repository is AGVSC general template library, which specifies the coding specification and file structure of a series of libraries, and plays a guiding and constraining role in the construction of other libraries, so as to make rapid development.
 
 ## Communication
 
-- QQ: 3130676972
-- Github: [https://github.com/C12H22O13/](https://github.com/C12H22O13)
-- Gitee: [https://gitee.com/c12h22o11](https://gitee.com/c12h22o11)
-- AGVSC: [https://gitee.com/agvsc](https://gitee.com/agvsc)
-- Email: [ericcholiu@hotmail.com](ericcholiu@hotmail.com)
+- Eric Liu @ Key R&D personnel
+  - QQ: 3130676972
+  - Github: [https://github.com/EricChoLiu/](https://github.com/EricChoLiu)
+  - Gitee: [https://gitee.com/c12h22o11](https://gitee.com/c12h22o11)
+  - Email: [ericcholiu@hotmail.com](ericcholiu@hotmail.com)
+
+- AGVSC
+  - Github: [https://github.com/AGVSC](https://github.com/AGVSC)
+  - Gitee: [https://gitee.com/agvsc](https://gitee.com/agvsc)

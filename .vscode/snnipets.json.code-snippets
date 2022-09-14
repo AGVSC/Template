@@ -29,6 +29,8 @@
 		"prefix": "docheader",
 		"description": "Add python module head description ",
 		"body": [
+			"#!/usr/bin/env python",
+			"# -*- encoding: utf-8 -*-",
 			"\"\"\"",
 			"${WORKSPACE_NAME/([a-z])/${1:/upcase}/}_${TM_FILENAME_BASE/(.*)/${1:/lowcase}/i}",
 			"",

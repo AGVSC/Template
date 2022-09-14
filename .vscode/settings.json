@@ -93,8 +93,15 @@
     "clang-format.style": "Google",
     // "doxdocgen.generic.authorName": "Eric Liu",
     // "doxdocgen.generic.authorEmail": "ericcholiu@hotmail.com",
+    "python.pythonPath": "/usr/bin/python3",
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
         "--style={based_on_style: yapf, indent_width: 4, column_limit: 120}"
-    ]
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintArgs": [],
+    "pylint.logLevel": "debug",
+    "pylint.showNotifications": "always"
 }

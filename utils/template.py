@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
 """
-Temp_template
+Template_template
 
 File name : Template.py
 Authors   : Eric Liu
 Time      : 2022-09-14, 03:36
-Version   : 0.1.2
+Version   : 0.1.3
 """
 
 import sys
@@ -32,7 +34,8 @@ RAW_STR = \
     "{}_{}\n\n"  \
     "Time : {}\n" \
     "Author : {}\n" \
-    "Description : {}"
+    "Description : {}\n" \
+    "Version : {}"
 
 EXPRESSION = "\n" \
         "Please use this commond \n" \
@@ -44,7 +47,7 @@ EXPRESSION = "\n" \
         "     -v, --version       : print version\n"
 
 
-def getroot():
+def get_root():
     """
     getroot :
         Get root directory.
@@ -72,17 +75,26 @@ def find_all_dirs():
     dirs : list(Str)
         A list with all secondary directories' name
     """
-    dirs = [dir for dir in os.listdir(getroot()) \
-            if os.path.isdir(os.path.join(getroot(), dir)) \
+    dirs = [dir for dir in os.listdir(get_root()) \
+            if os.path.isdir(os.path.join(get_root(), dir)) \
                 and dir[0] != '.']
     return dirs
 
 
-def print_version():
-    """ print_version : Print version info in '../VERSION' file. """
-    with open(getroot() + '/VERSION', 'r', encoding='utf-8') as file:
-        print(file.readline())
+def get_version():
+    """
+    get_version :
+         Get version info in '../VERSION' file.
+
+    Returns
+    ---------
+    file_ver : Str
+        File version
+    """
+    with open(get_root() + '/VERSION', 'r', encoding='utf-8') as file:
+        file_ver = file.readline()
         file.close()
+        return file_ver
 
 
 def install_info():
@@ -99,13 +111,13 @@ def install_info():
     """
 
     def install_file(text):
-        file_name = getroot() + text + '/INFO'
-        project_name = getroot().split('/')[-2]
+        file_name = get_root() + text + '/INFO'
+        project_name = get_root().split('/')[-2]
         print(file_name)
         with open(file_name, 'w', encoding='utf-8') as file:
             input_text = RAW_STR.format(project_name, text, \
                 time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-                                        os.getlogin(), DESCRIPTION[text])
+                                        os.getlogin(), DESCRIPTION[text], get_version())
             file.write(input_text)
             file.close()
 
@@ -121,7 +133,7 @@ def refresh():
         Remove 'build' directory and re=build it.
         Always using 'catkin_make' command.
     """
-    os.rmdir(getroot() + '/build')
+    os.rmdir(get_root() + '/build')
     os.system("catkin_make")
 
 
@@ -141,7 +153,7 @@ def remove_info():
         Number of folders in the root directory, which has INFO file.
     """
     dirs = find_all_dirs()
-    base_name = getroot()
+    base_name = get_root()
     count = 0
     for dir_name in dirs:
         file_name = base_name + dir_name + '/INFO'
@@ -153,22 +165,22 @@ def remove_info():
 
 
 if __name__ == '__main__':
-    params = sys.argv
-    if len(params) != 2:
+    PARAMS = sys.argv
+    if len(PARAMS) != 2:
         print_help()
     else:
-        param = params[1]
-        if param in ('-f', '--refresh', 'f', 'refresh'):
+        PARAM = PARAMS[1]
+        if PARAM in ('-f', '--refresh', 'f', 'refresh'):
             refresh()
             print("Refreshed project")
-        elif param in ('-h', '--help', 'h', 'help'):
+        elif PARAM in ('-h', '--help', 'h', 'help'):
             print_help()
-        elif param in ('-i', '--install_info', 'i', 'install'):
-            print(f"Installed info in {install_info()} folders at {getroot()}")
-        elif param in ('-v', '--version', 'v', 'version'):
-            print_version()
-        elif param in ('-r', '--remove', 'r', 'remove'):
-            print(f"Remove info in {remove_info()} folders at {getroot()}")
+        elif PARAM in ('-i', '--install_info', 'i', 'install'):
+            print(f"Installed info in {install_info()} folders at {get_root()}")
+        elif PARAM in ('-v', '--version', 'v', 'version'):
+            print(get_version())
+        elif PARAM in ('-r', '--remove', 'r', 'remove'):
+            print(f"Remove info in {remove_info()} folders at {get_root()}")
         else:
-            print(f"\nUser input : {params[0]} {params[1]} \n")
+            print(f"\nUser input : {PARAMS[0]} {PARAMS[1]} \n")
             print_help()
