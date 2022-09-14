@@ -5,7 +5,7 @@
 			"type": "catkin_make",
 			"args": [
 				"--directory",
-				"/home/rm/Desktop/AGVSC/agvhik-cam"
+				"${workspaceFolder}"
 			],
 			"problemMatcher": [
 				"$catkin-gcc"

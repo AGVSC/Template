@@ -4,7 +4,7 @@ Temp_template
 File name : Template.py
 Authors   : Eric Liu
 Time      : 2022-09-14, 03:36
-Version   : 0.1.0
+Version   : 0.1.2
 """
 
 import sys
@@ -27,40 +27,80 @@ DESCRIPTION = {
     "srv": "ROS service files"
 }
 
-RAW_STR = "{}_{}\n\n" \
+# ${PROJECT_NAME}_${DIR_NAME}
+RAW_STR = \
+    "{}_{}\n\n"  \
     "Time : {}\n" \
     "Author : {}\n" \
     "Description : {}"
 
+EXPRESSION = "\n" \
+        "Please use this commond \n" \
+        "    python template.py -{f/h/i/r/v} \n" \
+        "     -f, --refresh       : refresh\n" \
+        "     -h, --help          : help\n" \
+        "     -i, --install_info  : create all INFO\n" \
+        "     -r, --remove        : remove all INFO\n" \
+        "     -v, --version       : print version\n"
 
-def getpwd():
-    """_summary_
 
-    Returns:
-        _type_: _description_
+def getroot():
     """
-    # root = os.getcwd()
+    getroot :
+        Get root directory.
+
+    Returns
+    ---------
+    root_str : Str
+            Absolute path to the root file where the repository is located.
+    """
     root = os.path.abspath(__file__)
     basename = os.path.basename(__file__)
     if root.split('/')[-2] == 'utils':
-        return root.replace('/utils/' + basename, '/')
+        root_path = root.replace('/utils/' + basename, '/')
+        # print(root_path)
+        return root_path
+
+
+def find_all_dirs():
+    """
+    find_all_dirs :
+        Find all secondary directories' name.
+
+    Returns
+    ---------
+    dirs : list(Str)
+        A list with all secondary directories' name
+    """
+    dirs = [dir for dir in os.listdir(getroot()) \
+            if os.path.isdir(os.path.join(getroot(), dir)) \
+                and dir[0] != '.']
+    return dirs
 
 
 def print_version():
-    """_summary_
-    """
-    with open(getpwd() + '/VERSION', 'r', encoding='utf-8') as file:
+    """ print_version : Print version info in '../VERSION' file. """
+    with open(getroot() + '/VERSION', 'r', encoding='utf-8') as file:
         print(file.readline())
         file.close()
 
 
-def touch_info():
-    """_summary_
+def install_info():
+    """
+    install_info :
+        Create some INFO files and put them in every secondary root directorys.
+        Every INFO files will be written in a 'RAW_STR' string var.
+        Also you can modify it when you have other needs indeed.
+
+    Returns
+    ---------
+    num : Int
+        Number of folders in the root directory.
     """
 
-    def touch_file(text):
-        file_name = getpwd() + text + '/INFO'
-        project_name = getpwd().split('/')[-1]
+    def install_file(text):
+        file_name = getroot() + text + '/INFO'
+        project_name = getroot().split('/')[-2]
         print(file_name)
         with open(file_name, 'w', encoding='utf-8') as file:
             input_text = RAW_STR.format(project_name, text, \
@@ -69,30 +109,47 @@ def touch_info():
             file.write(input_text)
             file.close()
 
-    output = [dI for dI in os.listdir(getpwd()) if os.path.isdir(os.path.join(getpwd(), dI))]
-    dirs = [dir for dir in output if dir[0] != '.']
+    dirs = find_all_dirs()
     for dir_name in dirs:
-        touch_file(dir_name)
+        install_file(dir_name)
+    return len(dirs)
 
 
 def refresh():
-    """_summary_
     """
-    os.rmdir(getpwd() + '/build')
+    refresh :
+        Remove 'build' directory and re=build it.
+        Always using 'catkin_make' command.
+    """
+    os.rmdir(getroot() + '/build')
     os.system("catkin_make")
-    print("Refreshed project")
 
 
 def print_help():
-    """_summary_
+    """ print_help : printf help info stored in the 'EXPRESSION' string var. """
+    print(EXPRESSION)
+
+
+def remove_info():
     """
-    print("\nPlease use this commond \n    python template.py -{r/i/v/h} \n")
-    print_expression = \
-        "     -r, --refresh       : refresh\n" \
-        "     -h, --help          : help\n" \
-        "     -i, --install_info  : create information\n" \
-        "     -v, --version       : print version\n"
-    print(print_expression)
+    remove_info :
+        Remove ervery INFO file in every secondary root directorys if they existed.
+
+    Returns
+    ---------
+    count : Int
+        Number of folders in the root directory, which has INFO file.
+    """
+    dirs = find_all_dirs()
+    base_name = getroot()
+    count = 0
+    for dir_name in dirs:
+        file_name = base_name + dir_name + '/INFO'
+        # print(file_name)
+        if os.path.exists(file_name):
+            os.remove(file_name)
+            count += 1
+    return count
 
 
 if __name__ == '__main__':
@@ -101,12 +158,17 @@ if __name__ == '__main__':
         print_help()
     else:
         param = params[1]
-        if param == '-r' or param == '--refresh':
+        if param in ('-f', '--refresh', 'f', 'refresh'):
             refresh()
-        elif param == '-h' or param == '--help':
+            print("Refreshed project")
+        elif param in ('-h', '--help', 'h', 'help'):
             print_help()
-        elif param == '-i' or param == '--install_info':
-            print("install info")
-            touch_info()
-        elif param == '-v' or param == '--version':
+        elif param in ('-i', '--install_info', 'i', 'install'):
+            print(f"Installed info in {install_info()} folders at {getroot()}")
+        elif param in ('-v', '--version', 'v', 'version'):
             print_version()
+        elif param in ('-r', '--remove', 'r', 'remove'):
+            print(f"Remove info in {remove_info()} folders at {getroot()}")
+        else:
+            print(f"\nUser input : {params[0]} {params[1]} \n")
+            print_help()
