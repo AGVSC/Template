@@ -103,5 +103,7 @@
     "python.linting.lintOnSave": true,
     "python.linting.pylintArgs": [],
     "pylint.logLevel": "debug",
-    "pylint.showNotifications": "always"
+    "pylint.showNotifications": "always",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active"
 }
