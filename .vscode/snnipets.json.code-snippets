@@ -4,11 +4,11 @@
 		"prefix": "header",
 		"description": "Add #ifndef, #define and #endif",
 		"body": [
-			"#ifndef __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
-			"#define __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			"#ifndef __${WORKSPACE_NAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}_${TM_FILENAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			"#define __${WORKSPACE_NAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}_${TM_FILENAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
 			"",
 			"$0",
-			"#endif  // __${WORKSPACE_NAME}_${RELATIVE_FILEPATH/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
+			"#endif  // __${WORKSPACE_NAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}_${TM_FILENAME/([^a-zA-Z0-9])|([a-zA-Z0-9])/${1:+_}${2:/upcase}/g}__",
 			""
 		]
 	},

@@ -5,7 +5,6 @@
         "mine.cpplint", // cpp language check
         "cschlosser.doxdocgen", // cpp discrption generater
         "xaver.clang-format", // cpp formatter
-        "hars.CppSnippets", // cpp snippets
         // camke
         "twxs.cmake", // cmake language
         "josetr.cmake-language-support-vscode", // cmake support
@@ -18,10 +17,13 @@
         "kevinrose.vsc-python-indent", // python support
         "ms-python.pylint", // python language check
         "njpwerner.autodocstring", // python discrption generater
-        "frhtylcn.pythonsnippets", // python snippets
-        // tools 
+        // git
+        "eamodio.gitlens", // git support
+        "KnisterPeter.vscode-commitizen", // git commitizen
+        "joshbolduc.commitlint", // git commit check
+        // tools
         "aaron-bond.better-comments", // tool : better comments
-        "eamodio.gitlens", // tool : git support
         "shardulm94.trailing-spaces", // tool : remove useless space in lines
+        // "RLNT.keep-a-changelog" // tool : Changelog markdown snippets
     ]
 }

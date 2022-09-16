@@ -8,11 +8,11 @@
                 "/opt/ros/noetic/include/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c11",
-            "cppStandard": "gnu++14",
+            "compilerPath": "/usr/bin/g++-9",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "configurationProvider": "ms-vscode.cpptools"
         }
     ],
     "version": 4

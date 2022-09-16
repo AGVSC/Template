@@ -6,9 +6,10 @@ Template_template
 File name : Template.py
 Authors   : Eric Liu
 Time      : 2022-09-14, 03:36
-Version   : 0.1.3
+Version   : 0.1.4
 """
 
+import shutil
 import sys
 import os
 import time
@@ -145,7 +146,8 @@ def print_help():
 def remove_info():
     """
     remove_info :
-        Remove ervery INFO file in every secondary root directorys if they existed.
+        Remove every INFO file in every secondary root directories if they existed.
+        Remove 'build' directory if it exists.
 
     Returns
     ---------
@@ -154,6 +156,10 @@ def remove_info():
     """
     dirs = find_all_dirs()
     base_name = get_root()
+    build_dir = base_name + 'build'
+    if os.path.exists(build_dir):
+        shutil.rmtree(build_dir)
+
     count = 0
     for dir_name in dirs:
         file_name = base_name + dir_name + '/INFO'
@@ -161,6 +167,7 @@ def remove_info():
         if os.path.exists(file_name):
             os.remove(file_name)
             count += 1
+
     return count
 
 

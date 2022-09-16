@@ -91,8 +91,9 @@
     "clang-format.language.cuda.style": "Google",
     "clang-format.fallbackStyle": "Google",
     "clang-format.style": "Google",
-    // "doxdocgen.generic.authorName": "Eric Liu",
-    // "doxdocgen.generic.authorEmail": "ericcholiu@hotmail.com",
+    "doxdocgen.generic.authorName": "Eric Liu",
+    "doxdocgen.generic.authorEmail": "ericcholiu@hotmail.com",
+    "doxdocgen.file.versionTag": "@version 0.1.0",
     "python.pythonPath": "/usr/bin/python3",
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
@@ -105,5 +106,8 @@
     "pylint.logLevel": "debug",
     "pylint.showNotifications": "always",
     "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": "active"
+    "editor.guides.bracketPairs": "active",
+    "ros.distro": "noetic",
+    "keep-a-changelog.defaultAuthor": "Eric Liu",
+    "keep-a-changelog.defaultRepository": "agv-hik-cam"
 }
