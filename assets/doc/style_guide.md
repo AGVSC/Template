@@ -11,20 +11,6 @@
 
 提供了Template作为模板仓库用于快捷导入
 
-## C++
-
-### 参考`Google Style C++ Guide`
-
-- 与`Google Style C++ Guide`冲突的内容以本文当为先
-- 关于本文档未描述的内容参考`Google Style C++ Guide`
-  - [中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/)
-  - [英文版](https://google.github.io/styleguide/cppguide.html)
-*third_party内文件和其余SDK文件不需要依据本文档进行编码*
-
-### C++版本
-
-`C++11`/`C++17` 为主，在版本不兼容情况下可以使用其他标准
-
 ### 库结构
 
 | 文件夹名 | 注释 |
@@ -48,6 +34,20 @@
 | rviz *`optional`* *`ROS`* | `.srv` 文件|
 | scripts *`optional`* *`ROS`* | `rospy` 脚本文件 |
 | srv *`optional`* *`ROS`* | `.srv`文件 |
+
+## C++
+
+### 参考`Google Style C++ Guide`
+
+- 与`Google Style C++ Guide`冲突的内容以本文当为先
+- 关于本文档未描述的内容参考`Google Style C++ Guide`
+  - [中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/)
+  - [英文版](https://google.github.io/styleguide/cppguide.html)
+*third_party内文件和其余SDK文件不需要依据本文档进行编码*
+
+### C++版本
+
+`C++11`/`C++17` 为主，在版本不兼容情况下可以使用其他标准
 
 ### Header
 
@@ -157,7 +157,15 @@ k开头全大写加下划线
 - （鼓励）使用`namespace`嵌套
 - 不使用缩略名
 
-## markdown
+## Python
+
+### 参考`Google Style Python Guide`
+
+- [中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/)
+- [英文版](https://google.github.io/styleguide/pyguide.html)
+*third_party内文件和其余SDK文件不需要依据本文档进行编码*
+
+## Markdown
 
 - 遵循markdownlint的审查准则，不允许
 
