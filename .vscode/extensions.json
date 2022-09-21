@@ -1,29 +1,31 @@
 {
     "recommendations": [
-        // cpp
+        // * cpp
         "ms-vscode.cpptools-extension-pack", // cpp extension pack
         "mine.cpplint", // cpp language check
         "cschlosser.doxdocgen", // cpp discrption generater
         "xaver.clang-format", // cpp formatter
-        // camke
+        // "hars.CppSnippets", // cpp snippets
+        // * camke
         "twxs.cmake", // cmake language
         "josetr.cmake-language-support-vscode", // cmake support
-        // ros
+        // * ros
         "ms-iot.vscode-ros", // ros pack
         "ajshort.msg", // ros msg support
-        // python
+        // * python
         "ms-python.python", // python language
         "ms-python.vscode-pylance", // python support
         "kevinrose.vsc-python-indent", // python support
         "ms-python.pylint", // python language check
         "njpwerner.autodocstring", // python discrption generater
-        // git
+        // "frhtylcn.pythonsnippets", // python snippets
+        // * git
         "eamodio.gitlens", // git support
         "KnisterPeter.vscode-commitizen", // git commitizen
         "joshbolduc.commitlint", // git commit check
-        // tools
+        // * tools
         "aaron-bond.better-comments", // tool : better comments
         "shardulm94.trailing-spaces", // tool : remove useless space in lines
-        // "RLNT.keep-a-changelog" // tool : Changelog markdown snippets
+        "RLNT.keep-a-changelog" // tool : Changelog markdown snippets
     ]
 }

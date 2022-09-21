@@ -19,7 +19,7 @@
             "italic": false
         },
         {
-            "tag": "//",
+            "tag": "///",
             "color": "#474747",
             "strikethrough": true,
             "underline": false,
@@ -78,7 +78,8 @@
     "cpplint.filters": [
         "-build/header_guard",
         "-build/include_subdir",
-        "-runtime/reference"
+        "-runtime/reference",
+        "-runtime/int"
     ],
     "C_Cpp.inactiveRegionOpacity": null,
     "C_Cpp.formatting": "clangFormat",
@@ -94,6 +95,9 @@
     "doxdocgen.generic.authorName": "Eric Liu",
     "doxdocgen.generic.authorEmail": "ericcholiu@hotmail.com",
     "doxdocgen.file.versionTag": "@version 0.1.0",
+    "doxdocgen.file.copyrightTag": [
+        "@copyright Copyright (c) {year} QDU-IFF, AGVSC"
+    ],
     "python.pythonPath": "/usr/bin/python3",
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
