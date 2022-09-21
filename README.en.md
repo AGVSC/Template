@@ -6,6 +6,44 @@
 
 This repository is AGVSC general template library, which specifies the coding specification and file structure of a series of libraries, and plays a guiding and constraining role in the construction of other libraries, so as to make rapid development.
 
+- Refer to `assets/doc/pkg_create.md` for building repos.
+- Refer to `assets/doc/style_guide.md` for coding.
+
+## IDE
+
+Use Visual Studio Code on UBUNTU 20.04 to develop. Configure the development environment according to the .json files.
+
+## Dependancy
+
+- ROS noetic
+
+  - [Website](http://wiki.ros.org/noetic/Installation/Ubuntu)
+
+- cpplint
+
+  ```shell
+  sudo pip3 install cpplint
+  ```
+
+- yapf
+
+  ```shell
+  sudo pip3 install yapf
+  sudo apt install pylint
+  ```
+
+- npm
+  - config-conventional
+
+    ```shell
+    sudo apt install npm
+
+    npm install --save-dev @commitlint/config-conventional @commitlint/cli
+    npm install husky --save-dev
+    commitizen init git-cz --save-dev --save-exact
+    ```
+
+
 ## Communication
 
 - Eric Liu @ Key R&D personnel

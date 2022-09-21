@@ -11,7 +11,7 @@ CTestTestfile.cmake
 _deps
 
 /.history
-/.vscode
+# /.vscode
 /build
 
 evel/
