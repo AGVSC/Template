@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- encoding: utf-8 -*-
 """
 Template_template
@@ -23,6 +23,7 @@ DESCRIPTION = {
     "app": "Application files",
     "third_party": "Third party repos",
     "utils": "Utilitys script files",
+    "cfg": "ROS configure files",
     "launch": "ROS launch files",
     "msg": "ROS message files",
     "rviz": "ROS rviz files",
@@ -47,6 +48,8 @@ EXPRESSION = "\n" \
         "     -r, --remove        : remove all INFO\n" \
         "     -v, --version       : print version\n"
 
+FILE_NAME = '/.INFO'
+
 
 def get_root():
     """
@@ -62,7 +65,7 @@ def get_root():
     basename = os.path.basename(__file__)
     if root.split('/')[-2] == 'utils':
         root_path = root.replace('/utils/' + basename, '/')
-        # print(root_path)
+        # print("root_path", root_path)
         return root_path
 
 
@@ -76,8 +79,9 @@ def find_all_dirs():
     dirs : list(Str)
         A list with all secondary directories' name
     """
-    dirs = [dir for dir in os.listdir(get_root()) \
-            if os.path.isdir(os.path.join(get_root(), dir)) \
+    root_dir = get_root()
+    dirs = [dir for dir in os.listdir(root_dir) \
+            if os.path.isdir(os.path.join(root_dir, dir)) \
                 and dir[0] != '.']
     return dirs
 
@@ -110,17 +114,20 @@ def install_info():
     num : Int
         Number of folders in the root directory.
     """
+    root_dir = get_root()
 
     def install_file(text):
-        file_name = get_root() + text + '/INFO'
-        project_name = get_root().split('/')[-2]
-        print(file_name)
-        with open(file_name, 'w', encoding='utf-8') as file:
-            input_text = RAW_STR.format(project_name, text, \
-                time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+        file_name = root_dir + text + FILE_NAME
+        project_name = root_dir.split('/')[-2]
+        if text in DESCRIPTION:
+            with open(file_name, 'w', encoding='utf-8') as file:
+                input_text = RAW_STR.format(project_name, text, \
+                    time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
                                         os.getlogin(), DESCRIPTION[text], get_version())
-            file.write(input_text)
-            file.close()
+                file.write(input_text)
+                file.close()
+        else:
+            print(f"dir_name {text} is not essentional")
 
     dirs = find_all_dirs()
     for dir_name in dirs:
@@ -162,13 +169,19 @@ def remove_info():
 
     count = 0
     for dir_name in dirs:
-        file_name = base_name + dir_name + '/INFO'
-        # print(file_name)
+        file_name = base_name + dir_name + FILE_NAME
         if os.path.exists(file_name):
             os.remove(file_name)
             count += 1
 
     return count
+
+
+def test_fun():
+    """
+    test_fun _summary_ : Test function.
+    """
+    print("Test ended")
 
 
 if __name__ == '__main__':
@@ -188,6 +201,8 @@ if __name__ == '__main__':
             print(get_version())
         elif PARAM in ('-r', '--remove', 'r', 'remove'):
             print(f"Remove info in {remove_info()} folders at {get_root()}")
+        elif PARAM in ('-t', '--test', 't', 'test'):
+            test_fun()
         else:
-            print(f"\nUser input : {PARAMS[0]} {PARAMS[1]} \n")
+            print(f"Unused param : {PARAMS[1]} \nUser input : {PARAMS[0]} {PARAMS[1]}")
             print_help()

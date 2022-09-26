@@ -32,17 +32,6 @@
   sudo apt install pylint
   ```
 
-- npm
-  - config-conventional
-
-    ```shell
-    sudo apt install npm
-
-    npm install --save-dev @commitlint/config-conventional @commitlint/cli
-    npm install husky --save-dev
-    commitizen init git-cz --save-dev --save-exact
-    ```
-
 ## 联系
 
 - Eric Liu @ Key R&D personnel

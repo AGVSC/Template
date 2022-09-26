@@ -1,0 +1,11 @@
+
+- npm
+  - config-conventional
+
+    ```shell
+    sudo apt install npm
+
+    npm install --save-dev @commitlint/config-conventional @commitlint/cli
+    npm install husky --save-dev
+    commitizen init git-cz --save-dev --save-exact
+    ```

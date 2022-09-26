@@ -32,18 +32,6 @@ Use Visual Studio Code on UBUNTU 20.04 to develop. Configure the development env
   sudo apt install pylint
   ```
 
-- npm
-  - config-conventional
-
-    ```shell
-    sudo apt install npm
-
-    npm install --save-dev @commitlint/config-conventional @commitlint/cli
-    npm install husky --save-dev
-    commitizen init git-cz --save-dev --save-exact
-    ```
-
-
 ## Communication
 
 - Eric Liu @ Key R&D personnel

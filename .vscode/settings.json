@@ -113,5 +113,7 @@
     "editor.guides.bracketPairs": "active",
     "ros.distro": "noetic",
     "keep-a-changelog.defaultAuthor": "Eric Liu",
-    "keep-a-changelog.defaultRepository": "agv-hik-cam"
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
 }

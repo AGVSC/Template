@@ -6,26 +6,20 @@ module.exports = {
     {value: 'docs', name: '📝 文档的变更'},
     {
       value: 'style',
-      name: '💄 不改变代码功能的变动(如删除空格、格式化、去掉末尾分号等)',
+      name: '💄 不改变代码功能的变动(如删除空格、格式化、去掉末尾分号等)'
     },
-    {
-      value: 'refactor',
-      name: '♻ 重构代码。不包括 bug 修复、功能新增',
-    },
-    {
-      value: 'perf',
-      name: '⚡ 性能优化',
-    },
+    {value: 'refactor', name: '♻ 重构代码。不包括 bug 修复、功能新增'},
+    {value: 'perf', name: '⚡ 性能优化'},
     {value: 'test', name: '✅ 添加、修改测试用例'},
     {
       value: 'build',
       name:
-          '👷‍ 构建流程、外部依赖变更，比如升级 npm 包、修改 webpack 配置'
+          '👷‍ 构建流程、外部依赖变更，比如升级项目依赖'
     },
     {value: 'ci', name: '🔧 修改了 CI 配置、脚本'},
     {
       value: 'chore',
-      name: '对构建过程或辅助工具和库的更改,不影响源文件、测试用例的其他操作',
+      name: '对构建过程或辅助工具和库的更改,不影响源文件、测试用例的其他操作'
     },
     {value: 'revert', name: '⏪ 回滚 commit'},
 
@@ -33,11 +27,12 @@ module.exports = {
 
   // scope 类型，针对 React 项目
   scopes: [
-    ['components'], ['deps', '项目依赖修改'],
+    ['deps', '项目依赖修改'], ['template', '由于模板而发生的更改'],
+    ['WIP', 'Work in processing'],
     // 如果选择 custom ,后面会让你再输入一个自定义的 scope , 也可以不设置此项，
     // 把后面的 allowCustomScopes 设置为 true
   ].map(([value, description]) => {
-    return {value, name: `${value.padEnd(30)} (${description})`};
+    return {value, name: `${value.padEnd(15)} (${description})`};
   }),
 
   // allowTicketNumber: false,
@@ -49,13 +44,28 @@ module.exports = {
   /*
     scopeOverrides: {
       fix: [
-        { name: 'merge' },
-        { name: 'style' },
-        { name: 'e2eTest' },
-        { name: 'unitTest' }
-      ]
+        {name: 'merge'},
+        {name: 'style'},
+        {name: 'GTest'},
+        {name: 'CTest'},
+      ],
+      refactor: [
+        {name: 'structure'},
+        {name: 'class'},
+        {name: 'function'},
+        {name: 'file'},
+      ],
+      build: [
+        {name: 'dependancy'},
+        {name: 'template'},
+        {name: 'config'},
+      ],
+      chore: [
+        {name: 'rule'},
+        {name: ''},
+      ],
     },
-   */
+  */
   // 覆写提示的信息
   messages: {
     type: '请确保你的提交遵循了原子提交规范！\n选择你要提交的类型:',
@@ -70,8 +80,9 @@ module.exports = {
     confirmCommit: '确认提交?',
   },
 
-  // 是否允许自定义填写 scope ，设置为 true ，会自动添加两个 scope 类型 [{ name:
-  // 'empty', value: false },{ name: 'custom', value: 'custom' }]
+  // 是否允许自定义填写 scope ，设置为 true ，会自动添加两个 scope 类型
+  // [{ name: 'empty', value: false },{ name: 'custom', value: 'custom'
+  // }]
   allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
